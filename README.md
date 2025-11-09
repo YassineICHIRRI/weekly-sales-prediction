@@ -9,17 +9,7 @@ The project includes:
 - A Streamlit web app (`app.py`) for predictions, with features like model selection, visualizations, performance metrics, and interactivity.
 - Pre-trained models saved in the `models/` directory.
 - Helper scripts for data loading, preprocessing, inference, and visualization.
-  
-## Features
 
-- Upload store-level CSV datasets for predictions
-- Supports multiple ML models: Linear Regression, Random Forest, XGBoost
-- Generates lag features and rolling means for improved predictions
-- Displays predicted vs actual sales trends for each store
-- Allows downloading predictions as CSV
-- Exploratory Data Analysis (EDA) page with visualizations:
-  - Weekly sales trend
-  - Store-level sales variation
  
 ## Approach Summary
 ### Data Handling and Preprocessing
@@ -52,8 +42,10 @@ In `EDA_Model_training.ipynb`, I conducted EDA to understand the data:
 - **Reasoning**: Started with simple models and escalated to ensembles for better performance. Incorporated time-series features to address autocorrelation. Dropped low-importance features (e.g., temperature) based on EDA and model importances to reduce noise.
 - **Model Saving**: Used `joblib` to save models for inference in the app.
 
-> A detailed analysis is present in the notebook `notebooks/EDA_Model_training.ipynb`
+> A detailed analysis is present in the notebook `notebooks/EDA_Model_training.ipynb`.
 
+> Since the model training relies on the lag features , historical weekly_sales  are essentiel for prediction. In case of abscence, I used average store sales stored in the `date/store_stats.csv`
+ 
 ## Installation
 
 1. Clone the repository:
@@ -87,7 +79,18 @@ In `EDA_Model_training.ipynb`, I conducted EDA to understand the data:
    docker build -t store-sales-app .
    ```
 3. Run the docker container (exposes Streamlit on port 8501): 
-```cmd
-docker run -p 8501:8501 store-sales-app
-```
+   ```cmd
+    docker run -p 8501:8501 store-sales-app
+   ```
+## App Usage : 
+
+1. Access the application via localhost : `http://localhost:8501`
+2. Choose a model in the app page and click Load model
+3. Upload a csv file
+4. Click on Predict Weekly Sales to generate predictions , metrics and plots ( if the `weekly_sales` column is in the dataset )
+5. Click on download predictions ( Optional )
+6. Navigate to Exploratory Data Analysis page and interact with the U.I by selecting store number
+   
+
+
 
