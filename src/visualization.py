@@ -19,6 +19,20 @@ def plot_sales_trend(df):
     
     return fig
 
+def plot_actual_vs_predicted_time( y_test, y_pred, model="model"):
+    """
+    Plots actual vs predicted values over time.
+    """
+    fig, ax = plt.subplots(figsize=(18,9))
+    ax.plot(y_test.index, y_test.values, label='Actual Sales')
+    ax.plot(y_test.index, y_pred, label='Predicted Sales', linestyle='--')
+    ax.set_title(f'Actual vs Predicted Weekly Sales for {model}')
+    ax.set_ylabel("Weekly Sales")
+    ax.legend()
+    ax.grid(True)
+    return fig
+    
+
 def plot_prediction_vs_actual(df):
     fig, ax = plt.subplots()
     ax.figure(figsize=(12,6))
