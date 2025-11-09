@@ -61,6 +61,11 @@ In `EDA_Model_training.ipynb`, I conducted EDA to understand the data:
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
+   or Using Conda
+      ```bash
+   conda create -n sales-env python=3.11
+   conda activate sales-env
+   ```
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
@@ -85,12 +90,20 @@ In `EDA_Model_training.ipynb`, I conducted EDA to understand the data:
 ## App Usage : 
 
 1. Access the application via localhost : `http://localhost:8501`
-2. Choose a model in the app page and click Load model
-3. Upload a csv file
-4. Click on Predict Weekly Sales to generate predictions , metrics and plots ( if the `weekly_sales` column is in the dataset )
-5. Click on download predictions ( Optional )
-6. Navigate to Exploratory Data Analysis page and interact with the U.I by selecting store number
-   
+![App Screenshot](./media/sales_app.png)
 
+2. Choose a model in the app page and click Load model
+![Model Selection](./media/model_selection.png)
+
+3. Upload a csv file
+![Loading](./media/loading.png)
+
+4. Click on Predict Weekly Sales to generate predictions , metrics and plots ( if the `weekly_sales` column is in the dataset )
+![EDA](./media/metrics.png)
+
+5. Click on download predictions ( Optional )
+
+6. Navigate to Exploratory Data Analysis page and interact with the U.I by selecting store number
+   ![EDA](./media/EDA.png)
 
 
